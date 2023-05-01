@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "DoorKey.h"
+#include "DoorKey1.h"
 #include "PlayerCharacter.h"
 #include "Components/BoxComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -9,7 +9,7 @@
 #include "Game42LabJellyGameModeBase.h"
 
 // Sets default values
-ADoorKey::ADoorKey()
+ADoorKey1::ADoorKey1()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -17,7 +17,7 @@ ADoorKey::ADoorKey()
 	// Create Box Collision and door meshes
 	CollisionVolume = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionVolume"));
 	RootComponent = CollisionVolume;
-	
+
 	DoorRotate = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("DoorRotateMesh"));
 	DoorRotate->SetupAttachment(RootComponent);
 
@@ -26,64 +26,62 @@ ADoorKey::ADoorKey()
 }
 
 // Called when the game starts or when spawned
-void ADoorKey::BeginPlay()
+void ADoorKey1::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	// Create Overlap Functions and curve float timeline
-	CollisionVolume->OnComponentBeginOverlap.AddDynamic(this, &ADoorKey::OnOverlapBegin);
-	CollisionVolume->OnComponentEndOverlap.AddDynamic(this, &ADoorKey::OnOverlapEnd);
+	CollisionVolume->OnComponentBeginOverlap.AddDynamic(this, &ADoorKey1::OnOverlapBegin);
+	CollisionVolume->OnComponentEndOverlap.AddDynamic(this, &ADoorKey1::OnOverlapEnd);
 
 	if (CurveFloat)
 	{
 		FOnTimelineFloat TimelineProgress;
-		TimelineProgress.BindDynamic(this, &ADoorKey::OpenDoor);
-		Timeline.AddInterpFloat(CurveFloat, TimelineProgress);	
+		TimelineProgress.BindDynamic(this, &ADoorKey1::OpenDoor);
+		Timeline.AddInterpFloat(CurveFloat, TimelineProgress);
 	}
+	
 }
 
 // Called every frame
-void ADoorKey::Tick(float DeltaTime)
+void ADoorKey1::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 	Timeline.TickTimeline(DeltaTime);
 
 }
+
 // Called when on enter overlap collision
-void ADoorKey::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ADoorKey1::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	ActivateDoor();
 }
 
 // Called when on exit overlap collision
-void ADoorKey::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void ADoorKey1::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-
 }
 
 // Open door
-void ADoorKey::OpenDoor(float Value)
+void ADoorKey1::OpenDoor(float Value)
 {
-
-	
 	FRotator Rot = FRotator(0.f, DoorRotateAngle * Value, 0.f);
 
 	DoorRotate->SetRelativeRotation(Rot);
-
 }
 
 // On when player try to use door
-void ADoorKey::ActivateDoor()
+void ADoorKey1::ActivateDoor()
 {
 	AGame42LabJellyGameModeBase* GameMode = Cast<AGame42LabJellyGameModeBase>(GetWorld()->GetAuthGameMode());
-	if (GameMode->HasKey1 == true)
+	if (GameMode->HasKey2 == true)
 	{
 		// If key has been obtained, open door
 		if (bIsDoorClosed)
 		{
 			Timeline.Play();
-			GameMode->HasKey1 = false;
+			GameMode->HasKey2 = false;
 		}
 		else
 		{
@@ -92,11 +90,5 @@ void ADoorKey::ActivateDoor()
 
 		bIsDoorClosed = !bIsDoorClosed;
 	}
-
 }
-
-
-
-
-
 

@@ -16,19 +16,91 @@ class FNAF_JELLY_TEST_API AGame42LabJellyGameModeBase : public AGameModeBase
 
 public:
 
-	// Has key item
-	bool HasKey{ false };
+	// Has key item 1
+	bool HasKey1{ false };
 
-	// Key is active
-	bool KeyActive{ false };
+	// Has key item 2
+	bool HasKey2{ false };
 
-	// Pressure activated
-	int PressureCounter{ 0 };
+	// Has key item 3
+	bool HasKey3{ false };
 
-	// Can press door button 
-	bool DoorButtonActive{ false };
+	// Key 1 is active
+	bool KeyActive1{ false };
 
-	// Initial door button state
-	bool DoorActive{ false };
+	// Key 2 is active
+	bool KeyActive2{ false };
+
+	// Key 3 is active
+	bool KeyActive3{ false };
+
+	// Pressure type 1 activated
+	int PressureCounter1{ 0 };
+
+	// Pressure type 2 activated
+	int PressureCounter2{ 0 };
+
+	// Pressure type 3 activated
+	int PressureCounter3{ 0 };
+
+	// Can press door button 1
+	bool DoorButtonActive1{ false };
+
+	// Initial door button 1 state
+	bool DoorActive1{ false };
+
+	// Can press door button 2
+	bool DoorButtonActive2{ false };
+
+	// Initial door button 2 state
+	bool DoorActive2{ false };
+
+	// Can press door button 3
+	bool DoorButtonActive3{ false };
+
+	// Initial door button 3 state
+	bool DoorActive3{ false };
+
+	// Can press door button 4
+	bool DoorButtonActive4{ false };
+
+	// Initial door button 4 state
+	bool DoorActive4{ false };
+
+	// Can press door button 5
+	bool DoorButtonActive5{ false };
+
+	// Initial door button 5 state
+	bool DoorActive5{ false };
+
+	// Can press door button 6
+	bool DoorButtonActive6{ false };
+
+	// Initial door button 6 state
+	bool DoorActive6{ false };
+
+	// Can press door button 7
+	bool DoorButtonActive7{ false };
+
+	// Initial door button 7 state
+	bool DoorActive7{ false };
+
+	// Can press door button 8
+	bool DoorButtonActive8{ false };
+
+	// Initial door button 8 state
+	bool DoorActive8{ false };
+
+	// Can press door button 9
+	bool DoorButtonActive9{ false };
+
+	// Initial door button 9 state
+	bool DoorActive9{ false };
+
+	// Can press door button 10
+	bool DoorButtonActive10{ false };
+
+	// Initial door button 10 state
+	bool DoorActive10{ false };
 
 };

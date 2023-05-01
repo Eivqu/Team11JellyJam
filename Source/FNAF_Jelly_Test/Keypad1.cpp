@@ -48,7 +48,7 @@ void AKeypad1::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* OtherActor, 
 		APlayerCharacter* Char = Cast<APlayerCharacter>(OtherActor);
 		if (Char)
 		{
-			GameMode->DoorButtonActive = true;
+			GameMode->DoorButtonActive1 = true;
 		}
 	}
 }
@@ -62,7 +62,7 @@ void AKeypad1::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* Ot
 		APlayerCharacter* Char = Cast<APlayerCharacter>(OtherActor);
 		if (Char)
 		{
-			GameMode->DoorButtonActive = false;
+			GameMode->DoorButtonActive1 = false;
 		}
 	}
 }

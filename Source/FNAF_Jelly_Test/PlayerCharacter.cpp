@@ -120,22 +120,84 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 	PlayerInputComponent->BindAction("Run", IE_Released, this, &APlayerCharacter::PlayerStopRunning);
 }
 
-// Press "E" to Use nearby object
+// Press "E" to Use nearby object / collect item
 void APlayerCharacter::UseObject()
 {
 	AGame42LabJellyGameModeBase* GameMode = Cast<AGame42LabJellyGameModeBase>(GetWorld()->GetAuthGameMode());
-	if (GameMode->KeyActive == true)
+	if (GameMode->KeyActive1 == true)
 	{
-		GameMode->HasKey = true;
+		GameMode->HasKey1 = true;
 	}
 
-	if (GameMode->DoorButtonActive == true)
+	if (GameMode->KeyActive2 == true)
 	{
-		GameMode->DoorActive = true;
+		GameMode->HasKey2 = true;
+	}
+
+	if (GameMode->KeyActive3 == true)
+	{
+		GameMode->HasKey3 = true;
+	}
+
+	if (GameMode->DoorButtonActive1 == true)
+	{
+		GameMode->DoorActive1 = true;
 
 	}
 
+	if (GameMode->DoorButtonActive2 == true)
+	{
+		GameMode->DoorActive2 = true;
 
+	}
+
+	if (GameMode->DoorButtonActive3 == true)
+	{
+		GameMode->DoorActive3 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive4 == true)
+	{
+		GameMode->DoorActive4 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive5 == true)
+	{
+		GameMode->DoorActive5 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive6 == true)
+	{
+		GameMode->DoorActive6 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive7 == true)
+	{
+		GameMode->DoorActive7 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive8 == true)
+	{
+		GameMode->DoorActive8 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive9 == true)
+	{
+		GameMode->DoorActive9 = true;
+
+	}
+
+	if (GameMode->DoorButtonActive10 == true)
+	{
+		GameMode->DoorActive10 = true;
+
+	}
 }
 
 // Move player forward with "W" or backward with "S"

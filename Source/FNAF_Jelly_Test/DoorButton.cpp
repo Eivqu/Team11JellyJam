@@ -51,10 +51,10 @@ void ADoorButton::Tick(float DeltaTime)
 	Timeline.TickTimeline(DeltaTime);
 
 	AGame42LabJellyGameModeBase* GameMode = Cast<AGame42LabJellyGameModeBase>(GetWorld()->GetAuthGameMode());
-	if (GameMode->DoorActive == true)
+	if (GameMode->DoorActive1 == true)
 	{
 		ActivateDoor();
-		GameMode->DoorActive = false;
+		GameMode->DoorActive1 = false;
 	}
 }
 

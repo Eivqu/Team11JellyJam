@@ -1,13 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "PressureButton.h"
+#include "PressureButton2.h"
 #include "MoveableBox.h"
 #include "Components/BoxComponent.h"
 #include "Game42LabJellyGameModeBase.h"
 
 // Sets default values
-APressureButton::APressureButton()
+APressureButton2::APressureButton2()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -24,24 +24,25 @@ APressureButton::APressureButton()
 }
 
 // Called when the game starts or when spawned
-void APressureButton::BeginPlay()
+void APressureButton2::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	// Create Overlap Functions
-	CollisionVolume->OnComponentBeginOverlap.AddDynamic(this, &APressureButton::OnOverlapBegin);
-	CollisionVolume->OnComponentEndOverlap.AddDynamic(this, &APressureButton::OnOverlapEnd);
+	CollisionVolume->OnComponentBeginOverlap.AddDynamic(this, &APressureButton2::OnOverlapBegin);
+	CollisionVolume->OnComponentEndOverlap.AddDynamic(this, &APressureButton2::OnOverlapEnd);
+	
 }
 
 // Called every frame
-void APressureButton::Tick(float DeltaTime)
+void APressureButton2::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
 // Called when on enter overlap collision
-void APressureButton::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void APressureButton2::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor)
 	{
@@ -49,14 +50,13 @@ void APressureButton::OnOverlapBegin(UPrimitiveComponent* newComp, AActor* Other
 		AMoveableBox* Char = Cast<AMoveableBox>(OtherActor);
 		if (Char)
 		{
-			GameMode->PressureCounter1 += 1;
+			GameMode->PressureCounter3 += 1;
 		}
 	}
-
 }
 
 // Called when on exit overlap collision
-void APressureButton::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+void APressureButton2::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
 	if (OtherActor)
 	{
@@ -64,7 +64,7 @@ void APressureButton::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AAc
 		AMoveableBox* Char = Cast<AMoveableBox>(OtherActor);
 		if (Char)
 		{
-			GameMode->PressureCounter1 -= 1;
+			GameMode->PressureCounter3 -= 1;
 		}
 	}
 }
