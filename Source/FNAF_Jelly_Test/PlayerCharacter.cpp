@@ -6,6 +6,10 @@
 #include "Camera/CameraComponent.h"
 #include "DoorKey.h"
 #include "DoorButton.h"
+#include "CodeLock1.h"
+#include "CodeLock2.h"
+#include "CodeLock3.h"
+#include "CodeLock4.h"
 #include "Game42LabJellyGameModeBase.h"
 
 
@@ -197,6 +201,57 @@ void APlayerCharacter::UseObject()
 	{
 		GameMode->DoorActive10 = true;
 
+	}
+	if (GameMode->PassCodeButton1 == true)
+	{
+		for (TObjectIterator<ACodeLock1> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(ACodeLock1::StaticClass()))
+			{
+				ACodeLock1* CodeLock1 = *Itr;
+				CodeLock1->RotateObject();
+			}
+		}
+		GameMode->ChangePassCode1();
+	}
+
+	if (GameMode->PassCodeButton2 == true)
+	{
+		for (TObjectIterator<ACodeLock2> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(ACodeLock2::StaticClass()))
+			{
+				ACodeLock2* CodeLock2 = *Itr;
+				CodeLock2->RotateObject();
+			}
+		}
+		GameMode->ChangePassCode2();
+	}
+
+	if (GameMode->PassCodeButton3 == true)
+	{
+		for (TObjectIterator<ACodeLock3> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(ACodeLock3::StaticClass()))
+			{
+				ACodeLock3* CodeLock3 = *Itr;
+				CodeLock3->RotateObject();
+			}
+		}
+		GameMode->ChangePassCode3();
+	}
+
+	if (GameMode->PassCodeButton4 == true)
+	{
+		for (TObjectIterator<ACodeLock4> Itr; Itr; ++Itr)
+		{
+			if (Itr->IsA(ACodeLock4::StaticClass()))
+			{
+				ACodeLock4* CodeLock4 = *Itr;
+				CodeLock4->RotateObject();
+			}
+		}
+		GameMode->ChangePassCode4();
 	}
 }
 

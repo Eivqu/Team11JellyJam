@@ -103,4 +103,44 @@ public:
 	// Initial door button 10 state
 	bool DoorActive10{ false };
 
+	// Can press passcode button 1
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool PassCodeButton1{ false };
+
+	// Can press passcode button 2
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool PassCodeButton2{ false };
+
+	// Can press passcode button 3
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool PassCodeButton3{ false };
+
+	// Can press passcode button 4
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool PassCodeButton4{ false };
+
+	// Initial pass code 1 number
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PassCode1{ 1 };
+
+	// Initial pass code 2 number
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PassCode2{ 1 };
+
+	// Initial pass code 3 number
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PassCode3{ 1 };
+
+	// Initial pass code 4 number
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int PassCode4{ 1 };
+
+	void ChangePassCode1();
+
+	void ChangePassCode2();
+
+	void ChangePassCode3();
+
+	void ChangePassCode4();
+
 };
