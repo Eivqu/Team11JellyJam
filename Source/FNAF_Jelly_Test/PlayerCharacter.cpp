@@ -11,6 +11,7 @@
 #include "CodeLock3.h"
 #include "CodeLock4.h"
 #include "Game42LabJellyGameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 
 
 // Sets default values
@@ -42,6 +43,8 @@ APlayerCharacter::APlayerCharacter()
 void APlayerCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	PlayMusic();
 	
 	// Set player speed
 	GetCharacterMovement()->MaxWalkSpeed = 450.f;
@@ -303,6 +306,16 @@ void APlayerCharacter::PlayerStartRunning()
 void APlayerCharacter::PlayerStopRunning()
 {
 	PlayerRunning = false;
+}
+
+// Play Music
+void APlayerCharacter::PlayMusic()
+{
+	FVector Location = GetActorLocation();
+	if (SB_Music)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), SB_Music, Location, FRotator::ZeroRotator);
+	}
 }
 
 
