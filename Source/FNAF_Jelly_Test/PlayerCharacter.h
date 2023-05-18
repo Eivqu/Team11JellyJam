@@ -6,6 +6,8 @@
 #include "GameFramework/Character.h"
 #include "PlayerCharacter.generated.h"
 
+class USoundBase;
+
 UCLASS()
 class FNAF_JELLY_TEST_API APlayerCharacter : public ACharacter
 {
@@ -47,6 +49,10 @@ public:
 	// Player run energy
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, category = "Run Mechanics")
 	float RunEnergy;
+
+	// Music
+	UPROPERTY(EditDefaultsOnly, Category = "Sound Effects")
+	USoundBase* SB_Music;
 
 protected:
 	// Called when the game starts or when spawned
@@ -91,7 +97,8 @@ public:
 	UFUNCTION()
 	void PlayerStopRunning();
 
-
+	// Play Game Music
+	void PlayMusic();
 
 
 };
